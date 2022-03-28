@@ -39,6 +39,6 @@ class DashboardController extends BaseController
 
 	   	$data = ColorList::where($where)->first();	
 
-		return response()->json(['success'=>'true','code'=>'400','data'=>$data]);	   	
+		return response()->json(['success'=>'true','code'=>'200','data'=>$data]);	   	
 	}   
 }
