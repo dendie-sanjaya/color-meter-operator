@@ -16,6 +16,10 @@
 <link rel="stylesheet" type="text/css" href="{{ url('styles/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url('styles/framework.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url('fonts/css/fontawesome-all.min.css') }}">  
+<script type="text/javascript" src="{{ url('scripts/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ url('scripts/plugins.js') }}"></script>
+<script type="text/javascript" src="{{ url('scripts/custom.js') }}"></script>
+<script type="text/javascript" src="{{ url('scripts/jquery.cookie.min.js') }}"></script>
 
 @yield('css')
 </head>
@@ -29,10 +33,10 @@
     </div>
 
 
-    <div class="header header-fixed header-logo-center">
+    <div class="header header-fixed header-logo-center"> 
         <a href="{{ url('dashboard') }}" class="header-title">Color Meter Integria</a>
         <a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
-        <a href="#" data-toggle-theme-switch class="header-icon header-icon-4"><i class="fas fa-cog"></i></a>
+        <a href="#" data-menu="menu-choose-pattern-color" class="header-icon header-icon-4"><i class="fas fa-cog"></i></a>
     </div>
 
     <!--    
@@ -47,9 +51,6 @@
     </div>    
 </div>
 
-<script type="text/javascript" src="{{ url('scripts/jquery.js') }}"></script>
-<script type="text/javascript" src="{{ url('scripts/plugins.js') }}"></script>
-<script type="text/javascript" src="{{ url('scripts/custom.js') }}"></script>
 <script type="text/javascript">
     function deleteAllCookies() {
         var cookies = document.cookie.split(";");
