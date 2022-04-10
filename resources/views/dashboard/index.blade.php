@@ -71,7 +71,7 @@
     <a href="#" data-menu="menu-success-2" id="show-box-succes-2" style="display: none">Show Box Succes 2</a>
     <div id="menu-success-2" class="menu menu-box-modal menu-box-round-medium menu-box-detached round-small" 
          data-menu-width="310"
-         data-menu-height="360"
+         data-menu-height="auto"
          data-menu-effect="menu-over"
          data-menu-select="page-components">
         <!-- add data-cookie-activate above to auto-activate the menu on cookie detection -->
@@ -80,10 +80,11 @@
             <h2 class="uppercase bold">Result Scan Color</h2>
             <p class="under-heading color-highlight bottom-20">Nice we get detaction color!</p>
             <p class="center-text-huge">
-                <span id="result-scan-color-labe">Warna ...</span>
+                <span id="result-scan-color-label" style="color: white; font-size: 12px font-weight: bold"></span>
             </p>
             <!-- add hide-cookie to the class to delete the cookie-->
             <a href="#" class="close-menu button button-s button-center-large button-round-medium shadow-large bg-highlight">Awesome</a>
+            <br /><br />
         </div>
     </div> 
 
@@ -285,7 +286,7 @@
       document.getElementById('hexadecimal').value = rgbToHex(p[0],p[1],p[2]); 
       document.getElementById('rgb').value = p[0]+','+p[1]+','+p[2];  
 
-      scanColor((p[0],p[1],p[2]),rgbToHex(p[0],p[1],p[2]),$.cookie("pattern_color_id"));
+      scanColor(rgbToHex(p[0],p[1],p[2]),(p[0]+','+p[1]+','+p[2]),$.cookie("pattern_color_id"));
 
       });
     },false);
@@ -381,6 +382,7 @@
         success:function(response){
           console.log(response);
           if(response.code == 200) { 
+            $('#result-scan-color-label').html(response.data);
             $('#show-box-succes-2').click();
           } else {
             $('#show-add-color').click();            
