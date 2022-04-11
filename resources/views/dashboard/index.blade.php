@@ -39,7 +39,7 @@
         <div class="content-boxed" style="display: none;" id="capture-image" > 
             <div class="content"  style="cursor: pointer;" >
                 <h4 class="bolder" style="text-align: center;">Please Pick Color</h4>
-                <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none; color:white">
+                <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: block; color:white">
                 <div class="thumbnail">
                   <div class="preview"></div>
                   <img id="output" style="width: 100%; min-height: 100px;" />
@@ -260,7 +260,9 @@
       reader.readAsDataURL(evt);
       reader.onload = function(e) {
         var dataurl = e.target.result;
-        dataurl = "data:image/" + file.name.split('.').slice(-1)[0] + ";base64," + dataurl.split(',')[1];
+        console.log(file.value);
+        //dataurl = "data:image/" + file.name.split('.').slice(-1)[0] + ";base64," + dataurl.split(',')[1];
+        dataurl = "data:image/" + file.value + ";base64," + dataurl.split(',')[1];
         $("#output").attr("src",dataurl);
       }
 
