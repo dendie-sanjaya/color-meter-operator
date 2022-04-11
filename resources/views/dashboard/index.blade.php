@@ -232,7 +232,7 @@
 
     /*start convert image to base64 */
     function handleFileSelect(evt) {
-      document.getElementById('output').src = '';
+      //document.getElementById('output').src = '';
       var f = evt; 
       var reader = new FileReader();
       reader.onload = (function(theFile) {
@@ -242,11 +242,11 @@
           //document.getElementById('base64').value = base64String;
           var image = document.getElementById('output');
           image.src = 'data:image/png;base64,'+base64String;
-          //URL.createObjectURL(base64String);          
+          //URL.createObjectURL(base64String);      
+          autoClick();    
         };
       })(f);
       reader.readAsBinaryString(f);
-      return true;
     }
     /*end convert image to base64 */
 
@@ -257,9 +257,7 @@
         document.getElementById('result').style.display = 'block';
         var fileinput = event.target.files[0];
         document.getElementById('capture-image').style.display = 'block';
-        if(handleFileSelect(fileinput)) {
-          autoClick();
-        }
+        handleFileSelect(fileinput);
     };
     /*end load image */
 
@@ -427,7 +425,7 @@
           //var width = Math.ceil(img.clientWidth/2);
           //var height = Math.ceil(img.clientHeight/2);      
 
-          var width =  100;
+          var width =  50;
           var height = 15;
 
           console.log('Width:' + width + '  height:' + height);
