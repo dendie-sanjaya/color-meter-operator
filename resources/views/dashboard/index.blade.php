@@ -424,8 +424,11 @@
     function autoClick() {
         setTimeout(function(){
           var img = document.getElementById('output'); 
-          var width = Math.ceil(img.clientWidth/2);
-          var height = Math.ceil(img.clientHeight/2);      
+          //var width = Math.ceil(img.clientWidth/2);
+          //var height = Math.ceil(img.clientHeight/2);      
+
+          var width =  100;
+          var height = 15;
 
           console.log('Width:' + width + '  height:' + height);
 
