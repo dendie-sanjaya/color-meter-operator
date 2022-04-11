@@ -245,6 +245,7 @@
         };
       })(f);
       reader.readAsBinaryString(f);
+      autoClick();
     }
     /*end convert image to base64 */
 
@@ -416,6 +417,22 @@
         $('#color_pattern_tag_'+$.cookie("pattern_color_id")).show();                
       }
     }
+
+    function autoClick() {
+        setTimeout(function(){
+          var img = document.getElementById('output'); 
+          var width = Math.ceil(img.clientWidth/2);
+          var height = Math.ceil(img.clientHeight/2);      
+
+          //alert(Math.ceil(width / 2) + ' --- ' + Math.ceil(height / 2));  
+
+          var event = $.Event('click');
+          event.clientX = width;
+          event.clientY =  height;
+          $('#output').trigger(event);     
+        }, 2000); 
+    }
+
 </script>
 @endsection
 
