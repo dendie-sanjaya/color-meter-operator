@@ -241,7 +241,11 @@
           var base64String = window.btoa(binaryData);
           //document.getElementById('base64').value = base64String;
           var image = document.getElementById('output');
-          image.src = 'data:image/png;base64,'+base64String;
+          //image.src = 'data:image/png;base64,'+base64String;
+          //console.log(theFile.name.split('.').slice(-1)[0]);
+          //console.log(theFile.name.split('.').slice(-1)[0]);
+          image.src = "data:image/" + theFile.name.split('.').slice(-1)[0] + ";base64,"+base64String;
+          //image.src = 'data:image/png;base64,'+base64String;
           //URL.createObjectURL(base64String);      
           autoClick();    
         };
