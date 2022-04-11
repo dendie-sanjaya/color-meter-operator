@@ -42,7 +42,7 @@
                 <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none; color:white">
                 <div class="thumbnail">
                   <div class="preview"></div>
-                  <img id="output" width="100%" style="min-width: 30px" />
+                  <img id="output" style="width: 100%; min-height: 30px;" />
                   <canvas id="cs"></canvas>
                   <!--
                   <img  id="output" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAApgAAAKYB3X3/OAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANCSURBVEiJtZZPbBtFFMZ/M7ubXdtdb1xSFyeilBapySVU8h8OoFaooFSqiihIVIpQBKci6KEg9Q6H9kovIHoCIVQJJCKE1ENFjnAgcaSGC6rEnxBwA04Tx43t2FnvDAfjkNibxgHxnWb2e/u992bee7tCa00YFsffekFY+nUzFtjW0LrvjRXrCDIAaPLlW0nHL0SsZtVoaF98mLrx3pdhOqLtYPHChahZcYYO7KvPFxvRl5XPp1sN3adWiD1ZAqD6XYK1b/dvE5IWryTt2udLFedwc1+9kLp+vbbpoDh+6TklxBeAi9TL0taeWpdmZzQDry0AcO+jQ12RyohqqoYoo8RDwJrU+qXkjWtfi8Xxt58BdQuwQs9qC/afLwCw8tnQbqYAPsgxE1S6F3EAIXux2oQFKm0ihMsOF71dHYx+f3NND68ghCu1YIoePPQN1pGRABkJ6Bus96CutRZMydTl+TvuiRW1m3n0eDl0vRPcEysqdXn+jsQPsrHMquGeXEaY4Yk4wxWcY5V/9scqOMOVUFthatyTy8QyqwZ+kDURKoMWxNKr2EeqVKcTNOajqKoBgOE28U4tdQl5p5bwCw7BWquaZSzAPlwjlithJtp3pTImSqQRrb2Z8PHGigD4RZuNX6JYj6wj7O4TFLbCO/Mn/m8R+h6rYSUb3ekokRY6f/YukArN979jcW+V/S8g0eT/N3VN3kTqWbQ428m9/8k0P/1aIhF36PccEl6EhOcAUCrXKZXXWS3XKd2vc/TRBG9O5ELC17MmWubD2nKhUKZa26Ba2+D3P+4/MNCFwg59oWVeYhkzgN/JDR8deKBoD7Y+ljEjGZ0sosXVTvbc6RHirr2reNy1OXd6pJsQ+gqjk8VWFYmHrwBzW/n+uMPFiRwHB2I7ih8ciHFxIkd/3Omk5tCDV1t+2nNu5sxxpDFNx+huNhVT3/zMDz8usXC3ddaHBj1GHj/As08fwTS7Kt1HBTmyN29vdwAw+/wbwLVOJ3uAD1wi/dUH7Qei66PfyuRj4Ik9is+hglfbkbfR3cnZm7chlUWLdwmprtCohX4HUtlOcQjLYCu+fzGJH2QRKvP3UNz8bWk1qMxjGTOMThZ3kvgLI5AzFfo379UAAAAASUVORK5CYII=">
@@ -252,7 +252,7 @@
 
     /*start load image */
     var loadFile = function(event) {
-        var loading = '<div  style="font-weight:bold; padding:3px; margin:5px; text-align:center; border:white 2px solid; background-color: white">Process Scaning...</div>';
+        var loading = '<div  style="font-weight:bold; padding:0px; margin-top:10px; text-align:center; border:white 2px solid; background-color: white">Please Click Color</div>';
         document.getElementById('result').innerHTML=loading; 
         document.getElementById('result').style.display = 'block';
         var fileinput = event.target.files[0];
@@ -278,7 +278,7 @@
       useCanvas(canvas,img,function(){
       var p = canvas.getContext('2d')
       .getImageData(x, y, 1, 1).data; 
-      result.innerHTML = '<div  style="font-weight:bold; padding:3px; margin:5px; text-align:center; border:white 2px solid; background-color: '+rgbToHex(p[0],p[1],p[2])+'">Hexadecimal: '+rgbToHex(p[0],p[1],p[2])+'&nbsp;&nbsp;'+
+      result.innerHTML = '<div  style="font-weight:bold; padding:0px; margin-top: 10px; text-align:center; border:white 2px solid; background-color: '+rgbToHex(p[0],p[1],p[2])+'">Hexadecimal: '+rgbToHex(p[0],p[1],p[2])+'&nbsp;&nbsp;'+
        'RGB: ('+
         p[0]+','+
         p[1]+','+
@@ -420,22 +420,29 @@
     }
 
     function autoClick() {
-        setTimeout(function(){
+          /*
           var img = document.getElementById('output'); 
-          //var width = Math.ceil(img.clientWidth/2);
-          //var height = Math.ceil(img.clientHeight/2);      
 
-          var width =  50;
-          var height = 15;
+          var height = Math.ceil($("#output").height()/2);
+          var width = Math.ceil($("#output").width()/2);
 
+          setTimeout(function(){
           console.log('Width:' + width + '  height:' + height);
 
-
+          $("#output").focus();
           var event = $.Event('click');
-          event.clientX = width;
-          event.clientY =  height;
-          $('#output').trigger(event);     
+          //event.clientX = width;
+          //event.clientY =  height;
+          //$('#output').trigger(event,[height,width]);   
+          event.pageX = 10;
+          event.pageY = 10;  
+          //var x = event.pageX - this.offsetLeft;
+          //var y = event.pageY - this.offsetTop;
+
+          $('#output').trigger(event);    
+
         }, 2000); 
+        */
     }
 
 </script>
