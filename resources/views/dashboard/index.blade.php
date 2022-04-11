@@ -233,6 +233,7 @@
     /*start convert image to base64 */
     function handleFileSelect(evt) {
       //document.getElementById('output').src = '';
+      /*
       var f = evt; 
       var reader = new FileReader();
       reader.onload = (function(theFile) {
@@ -244,13 +245,25 @@
           //image.src = 'data:image/png;base64,'+base64String;
           //console.log(theFile.name.split('.').slice(-1)[0]);
           //console.log(theFile.name.split('.').slice(-1)[0]);
-          image.src = "data:image/" + theFile.name.split('.').slice(-1)[0] + ";base64,"+base64String;
+          //image.src = "data:image/" + theFile.name.split('.').slice(-1)[0] + ";base64,"+base64String;
+          image.src = "data:image/" + theFile.name.split('.').slice(-1)[0] + ";base64,"+binaryData.split(',')[1];
+
           //image.src = 'data:image/png;base64,'+base64String;
           //URL.createObjectURL(base64String);      
           autoClick();    
         };
       })(f);
       reader.readAsBinaryString(f);
+      */
+
+      var reader = new FileReader();
+      reader.readAsDataURL(evt);
+      reader.onload = function(e) {
+        var dataurl = e.target.result;
+        dataurl = "data:image/" + file.name.split('.').slice(-1)[0] + ";base64," + dataurl.split(',')[1];
+        $("#output").attr("src",dataurl);
+      }
+
     }
     /*end convert image to base64 */
 
