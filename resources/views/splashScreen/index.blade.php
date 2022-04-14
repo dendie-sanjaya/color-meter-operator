@@ -15,11 +15,14 @@
         
     <div class="page-content">  
         
-        <!--
         <div class="caption-top">
+            <!--
             <a href="#" data-toggle-theme class="button button-xxs button-round-huge shadow-huge button-center-small bg-green1-dark top-20"><i class="fa fa-lightbulb right-15"></i>Dark Mode</a>
+            -->
+            <img class="button button-xxs button-round-huge  button-center-small bg-white top-80" src="{{ url('images/logo.png') }}" />             
         </div>   
-        -->
+
+
         
         <div class="cover-wrapper cover-has-buttons">    
             <!--
