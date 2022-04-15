@@ -73,10 +73,10 @@
                     </div>
 
                     <div class="caption-bottom bottom-100">
-                        <h1 class="center-text bolder font-33 bottom-0">Integria Scan Color</h1>
+                        <h1 class="center-text bolder font-33 bottom-0">Nurticell Scan Color</h1>
                         <h6 class="center-text thiner font-15 bottom-20 color-highlight">Scan Your Color</h6>
                         <p class="color-theme boxed-text-huge opacity-80 bottom-50">
-                            Integria Scan Color allows you to easily scan color and organize to your color collection
+                            Nurticell Scan Color allows you to easily scan color and organize to your color collection
                         </p>
                     </div>
                 </div>            
