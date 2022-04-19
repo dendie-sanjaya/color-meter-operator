@@ -114,37 +114,11 @@
         <a href="#" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-red1-light">Go Back</a>
     </div>   
 
-
-    <div id="menu-success-2" class="menu menu-box-modal menu-box-round-medium menu-box-detached round-small" 
-         data-menu-width="310"
-         data-menu-height="auto"
-         data-menu-effect="menu-over"
-         data-menu-select="page-components">
-        <!-- add data-cookie-activate above to auto-activate the menu on cookie detection -->
-        <div class="top-30 boxed-text-huge">
-            <h1 class="bottom-30"><i class="fa fa-check-circle color-green1-dark fa-3x"></i></h1>
-            <h2 class="uppercase bold">Result Scan Color</h2>
-            <p class="under-heading color-highlight bottom-20">Nice we get detaction color!</p>
-            <p class="center-text-huge">
-                <span id="result-scan-color-label" style="color: white; font-size: 12px font-weight: bold"></span>
-            </p>
-            <!-- add hide-cookie to the class to delete the cookie-->
-            <a href="#" class="close-menu button button-s button-center-large button-round-medium shadow-large bg-highlight">Awesome</a>
-            <br /><br />
-        </div>
-    </div> 
-
-
-    <a href="#" data-menu="menu-info" id="show-box-info" style="display: none" class="menu menu-box-modal menu-box-round-medium 
-        menu-box-detached round-small"  
-         data-menu-width="310"
-         data-menu-height="auto"
-         data-menu-effect="menu-over"
-         data-menu-select="page-components">Show Box Warning</a>
+    <a href="#" data-menu="menu-info" id="show-box-info" style="display: none">Show Box Warning</a>
     <div id="menu-info" 
          class="menu menu-box-bottom menu-box-detached round-medium" 
          data-menu-height="240" 
-         data-menu-effect="menu-over"> 
+         data-menu-effect="menu-over">
         <div class="boxed-text-huge">
             <h3 class="center-text uppercase ultrabold top-30">Opps, Color Already Exist</h3>
             <p>
@@ -153,6 +127,46 @@
             <a href="#" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-red1-light">Go Back</a>
         </div>
     </div> 
+
+    <!--
+    <a href="#" data-menu="menu-add-color" id="show-add-color" style="display: none">Menu Add Color</a>
+    <div id="menu-add-color" 
+         class="menu menu-box-bottom menu-box-detached round-medium" 
+         data-menu-height="380" 
+         data-menu-effect="menu-over">
+
+        <div class="boxed-text-huge">
+            <h3 class="center-text uppercase ultrabold top-30">Opps, Color Not Found</h3>
+            <p>
+                You can add a new collection color, please choose a grade and pattern, by filling out the form below
+            </p>
+
+            <div class="content">
+                <input type="hidden" name="hexadecimal" id="hexadecimal" value="">
+                <input type="hidden" name="rgb" id="rgb" value="">
+                <div class="input-style input-style-2 input-required margin-top-1">
+                    <label class="contactNameField color-theme" for="contactNameField" style="text-align: left;" >Grade Color</label>
+                    <select name="color_grade_id" id="color_grade_id" class="contactField round-small" >
+                        <?php foreach ($dataColorGrade as $val): ?>
+                            <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
+                        <?php endforeach; ?>
+                    </select>                
+                </div>    
+
+                <div class="input-style input-style-2 input-required margin-top-1">
+                    <label class="contactNameField color-theme" for="contactNameField" style="text-align: left;">Patern Color</label>
+                    <select name="color_patern_id" id="color_pattern_id" class="contactField round-small" >
+                        <?php foreach ($dataColorPattern as $val): ?>
+                            <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
+                        <?php endforeach; ?>
+                    </select>                
+                </div>   
+                <a href="#" class="button button-xxs shadow-small button-round-small bg-green2-dark round-small;" onclick="saveColor()" style="width: 47%">Save Color</a>
+                <a href="#" class=" close-menu button button-xxs shadow-small button-round-small bg-red1-light round-small;" style="width: 47%">Go Back</a>
+            </div>   
+        </div>
+    </div>   
+    -->
 
     <a href="#" data-menu="menu-add-color" id="show-add-color" style="display: none">Menu Add Color</a>
     <div id="menu-add-color" class="menu menu-box-modal menu-box-round-medium menu-box-detached round-small" 
@@ -209,7 +223,40 @@
               -->
             </div>   
         </div>
+    </div>                   
+
+    <div id="menu-choose-pattern-color" 
+         class="menu menu-box-bottom menu-box-detached round-medium" 
+         data-menu-height="400" 
+         data-menu-effect="menu-over">
+
+        <div class="">
+            <h3 class="center-text uppercase ultrabold top-30">Choose Pattern Color</h3>
+            <br />
+            <div class="content">
+                <div class="link-list link-list-1">
+                    <?php foreach ($dataColorPattern as $val): ?>                    
+                      <a href="javascript:setDefaultPattern('{{ $val->id }}')">
+                          <i class="fa fa-star color-yellow1-dark"></i>
+                          <span><?php echo $val->name ?></span>
+                          <em class="bg-highlight color_pattern_tag" style="display: none" id="color_pattern_tag_{{ $val->id }}" >DEFAULT</em>
+                          <i class="fa fa-angle-right"></i>
+                      </a>
+                    <?php endforeach; ?>  
+                    <script type="text/javascript">
+                      $( document ).ready(function() {
+                         setDefaultPatternFirst({{ $val->id }})
+                      });   
+                    </script>  
+                </div>
+            </div>
+                  
+            <div class="content">
+                <a href="#" id="btn-close-choose_pattern_color" class="close-menu button button-xxs shadow-small button-round-small bg-red1-light round-small;" style="width: 100%; text-align: center;">Go Back</a>
+            </div>   
+        </div>
     </div>                  
+
 @endsection
 
 @section('js')
