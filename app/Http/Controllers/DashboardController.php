@@ -28,6 +28,17 @@ class DashboardController extends BaseController
 	   return view('dashboard.index',['data' => $data, 'dataColorGrade' => $dataColorGrade, 'dataColorPattern' => $dataColorPattern]);
 	} 
 
+	public function color_scan()
+	{				
+	   $data = array();	
+	   $config = Config::where('is_delete','no')->get();
+
+	   $dataColorGrade = ColorGrade::orderBy('name', 'asc')->where([['is_delete','no']])->get();
+	   $dataColorPattern = ColorPattern::orderBy('name', 'asc')->where([['is_delete','no']])->get();
+
+	   return view('colorScan.index',['data' => $data, 'dataColorGrade' => $dataColorGrade, 'dataColorPattern' => $dataColorPattern]);
+	} 
+
 	public function scan(Request $request) {
 	    $config = Config::where([['is_delete','no'],['name','color_tolerance']])->first();
 	    $color_tolerance = 0;

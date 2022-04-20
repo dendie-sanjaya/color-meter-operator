@@ -20,6 +20,8 @@ Route::post('scan', 'DashboardController@scan')->name('dashboard');
 Route::get('config', 'ConfigController@index')->name('config');
 Route::post('colorList/saveAjax', 'ColorListController@saveAjax')->name('colorList'); 
 Route::get('splashScreen', 'SplashScreenController@index')->name('splashScreen');
+Route::get('colorScan', 'DashboardController@color_scan')->name('dashboard');
+
 
 /*
 Route::group(['middleware' => 'check.auth'], function() {

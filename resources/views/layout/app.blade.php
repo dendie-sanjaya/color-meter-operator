@@ -50,6 +50,48 @@
 
     <div class="page-content header-clear-medium">
         @yield('content')
+
+        <div id="menu-choose-pattern-color" 
+             class="menu menu-box-bottom menu-box-detached round-medium" 
+             data-menu-height="400" 
+             data-menu-effect="menu-over">
+
+            <div class="">
+                <h3 class="center-text uppercase ultrabold top-30">Choose Pattern Color</h3>
+                <br />
+                <div class="content">
+                    <div class="link-list link-list-1">
+                        <?php foreach ($dataColorPattern as $val): ?>                    
+                          <a href="javascript:setDefaultPattern('{{ $val->id }}')">
+                              <i class="fa fa-star color-yellow1-dark"></i>
+                              <span><?php echo $val->name ?></span>
+                              <em class="bg-highlight color_pattern_tag" style="display: none" id="color_pattern_tag_{{ $val->id }}" >DEFAULT</em>
+                              <i class="fa fa-angle-right"></i>
+                          </a>
+                        <?php endforeach; ?>  
+                        <script type="text/javascript">
+                          $( document ).ready(function() {
+                             setDefaultPatternFirst({{ $val->id }})
+                          });   
+                        </script>  
+                    </div>
+                </div>
+                      
+                <div class="content">
+                    <div class="demo-buttons" style="align-content: center;">
+                        <a href="{{ url('dashboard') }}" class="button button-xxs shadow-small button-round-small bg-red1-light" style="width: 45%">
+                           <i class="fa fa-home"></i>&nbsp;&nbsp;Dashboard
+                        </a>
+                        <a href="{{ url('colorScan') }}" class="button button-xxs shadow-small button-round-small bg-blue1-light" style="width: 45%">
+                           <i class="fa fa-search"></i>&nbsp;&nbsp;New Colors
+                        </a>
+
+                        <a href="#" id="btn-close-choose_pattern_color" class="close-menu button button-xxs shadow-small button-round-small bg-red1-light round-small;" style="width: 100%; text-align: center; display: none">Close</a>
+                    </div>
+                </div>   
+            </div>
+        </div>     
+
     </div>    
 </div>
 
@@ -64,6 +106,31 @@
             document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
         }
     }
+
+
+    function setDefaultPattern(patternId) {
+      //expire 30 day
+      $.cookie("pattern_color_id", patternId, { expires: 30, path: '/' });
+      //alert($.cookie("pattern_color_id"));
+      $('.color_pattern_tag').hide();
+      $('#color_pattern_tag_'+patternId).show();
+      $('#btn-close-choose_pattern_color').click();
+      $('#btn-close-choose_pattern_color').trigger('click');
+    }
+
+    function setDefaultPatternFirst(patternId) {
+      //expire 30 day
+      if(!$.cookie("pattern_color_id")) {
+        $.cookie("pattern_color_id", patternId, { expires: 30, path: '/' });
+        $('.color_pattern_tag').hide();
+        $('#color_pattern_tag_'+patternId).show();        
+      } else  {
+        $('.color_pattern_tag').hide();
+        $('#color_pattern_tag_'+$.cookie("pattern_color_id")).show();                
+      }
+    }
+
+
 
     function cleareCache() {
     }

@@ -16,6 +16,7 @@
 
 @section('content')
     <div class="page-content header-clear-small">        
+        <!--
         <div id="header-1" data-height="130" class="caption caption-margins round-medium shadow-huge">
             <div class="caption-center left-15 text-left">
                 <h1 class="color-white bolder">Scan Color</h1>
@@ -35,10 +36,15 @@
                 </p>
             </div>            
         </div>
+        -->
 
-        <div class="content-boxed" id="header-3" style="margin-top: -50px; display: none">  
-            <div class="content" style="text-align: center;">          
-                <h3 class="bolder">Color Meter Nutricell</h3>
+        <div class="content-boxed" id="header-3" style="margin-top: -50px;">  
+            <div class="content" >          
+                <h3 class="bolder">Scan New Color</h3>
+
+                <p style="text-align: justify;">
+                    welcome to color meter Nutricell, this feature for add new scan color
+                </p>
             </div>  
         </div>
 
@@ -164,40 +170,7 @@
                 <a href="#" class=" close-menu button button-xxs shadow-small button-round-small bg-red1-light round-small;" style="width: 47%">Go Back</a>
             </div>   
         </div>
-    </div>                  
-
-    <div id="menu-choose-pattern-color" 
-         class="menu menu-box-bottom menu-box-detached round-medium" 
-         data-menu-height="400" 
-         data-menu-effect="menu-over">
-
-        <div class="">
-            <h3 class="center-text uppercase ultrabold top-30">Choose Pattern Color</h3>
-            <br />
-            <div class="content">
-                <div class="link-list link-list-1">
-                    <?php foreach ($dataColorPattern as $val): ?>                    
-                      <a href="javascript:setDefaultPattern('{{ $val->id }}')">
-                          <i class="fa fa-star color-yellow1-dark"></i>
-                          <span><?php echo $val->name ?></span>
-                          <em class="bg-highlight color_pattern_tag" style="display: none" id="color_pattern_tag_{{ $val->id }}" >DEFAULT</em>
-                          <i class="fa fa-angle-right"></i>
-                      </a>
-                    <?php endforeach; ?>  
-                    <script type="text/javascript">
-                      $( document ).ready(function() {
-                         setDefaultPatternFirst({{ $val->id }})
-                      });   
-                    </script>  
-                </div>
-            </div>
-                  
-            <div class="content">
-                <a href="#" id="btn-close-choose_pattern_color" class="close-menu button button-xxs shadow-small button-round-small bg-red1-light round-small;" style="width: 100%; text-align: center;">Go Back</a>
-            </div>   
-        </div>
-    </div>                  
-
+    </div>                   
 @endsection
 
 @section('js')
@@ -423,28 +396,6 @@
        });
     }
     /*end convert image to base64 */
-
-    function setDefaultPattern(patternId) {
-      //expire 30 day
-      $.cookie("pattern_color_id", patternId, { expires: 30, path: '/' });
-      //alert($.cookie("pattern_color_id"));
-      $('.color_pattern_tag').hide();
-      $('#color_pattern_tag_'+patternId).show();
-      $('#btn-close-choose_pattern_color').click();
-    }
-
-    function setDefaultPatternFirst(patternId) {
-      //expire 30 day
-      if(!$.cookie("pattern_color_id")) {
-        $.cookie("pattern_color_id", patternId, { expires: 30, path: '/' });
-        $('.color_pattern_tag').hide();
-        $('#color_pattern_tag_'+patternId).show();        
-      } else  {
-        $('.color_pattern_tag').hide();
-        $('#color_pattern_tag_'+$.cookie("pattern_color_id")).show();                
-      }
-    }
-
     function autoClick() {
           /*
           var img = document.getElementById('output'); 
@@ -472,9 +423,11 @@
     }
 
     function hide_header() {
+       /*
        document.getElementById('header-1').style.display = 'none';
        document.getElementById('header-2').style.display = 'none';
        document.getElementById('header-3').style.display = 'block';
+       */
     }
 </script>
 @endsection
