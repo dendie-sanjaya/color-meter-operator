@@ -179,7 +179,8 @@
         <div class="boxed-text-huge">
             <h3 class="center-text uppercase ultrabold top-30">Opps!</h3>
             <p style="color: white">
-                Undifiend Color Set and Color Grand No Found
+                Undifiend Color Set and Color Grade No Found
+            
             </p>
 
             <div class="top-30 boxed-text-huge">
