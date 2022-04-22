@@ -143,7 +143,7 @@
         <div class="boxed-text-huge">
             <h3 class="center-text uppercase ultrabold top-30">Opps, Color Not Found</h3>
             <p>
-                You can add a new collection color, please choose a grade and pattern, by filling out the form below
+                You can add a new collection color, please choose a grade and color set, by filling out the form below
             </p>
 
             <div class="content">
@@ -159,7 +159,7 @@
                 </div>    
 
                 <div class="input-style input-style-2 input-required margin-top-1">
-                    <label class="contactNameField color-theme" for="contactNameField" style="text-align: left;">Patern Color</label>
+                    <label class="contactNameField color-theme" for="contactNameField" style="text-align: left;">Color Set</label>
                     <select name="color_patern_id" id="color_pattern_id" class="contactField round-small" >
                         <?php foreach ($dataColorPattern as $val): ?>
                             <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
