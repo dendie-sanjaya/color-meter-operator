@@ -141,7 +141,7 @@
          data-menu-effect="menu-over">
 
         <div class="boxed-text-huge">
-            <h3 class="center-text uppercase ultrabold top-30">Opps, Color Not Found</h3>
+            <h3 class="center-text uppercase ultrabold top-30">Opps, Not Found</h3>
             <p>
                 You can add a new collection color, please choose a grade and color set, by filling out the form below
             </p>
