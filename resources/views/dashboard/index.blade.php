@@ -189,7 +189,7 @@
 
                 <h1 class="bottom-30"><i class="fa fa-3x fa-times color-red2-dark"></i></h1>
                 <h2 class="uppercase bold">Chosen Color<h2>
-                <p class="under-heading color-highlight bottom-20">Undifiend Color Set and Color Grand No Found!</p>
+                <p class="under-heading color-highlight bottom-20">Undifiend Color Set and Color Grade No Found!</p>
                 <p class="center-text-huge">
                     <span id="result_modal" class="result_modal" style="color: white; font-size: 12px font-weight: bold"></span>
                 </p>
