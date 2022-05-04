@@ -50,9 +50,7 @@
                 <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none; color:white">
                 <div class="thumbnail">
                   <div class="preview"></div>
-                  <canvas id="cs" style="width: 100%; min-height: 100px;">
-                    <img id="output" style="width: 100%; min-height: 100px;" />                  
-                    
+                  <canvas id="cs" style="width: 100%; min-height: 100px;">                                                      
                   </canvas>
                   <!--
                   <canvas id="myCanvas" ></canvas>    
@@ -231,7 +229,8 @@
               -->
             </div>   
         </div>
-    </div>                               
+    </div>     
+    <img id="output" style="width: 100%; min-height: 100px; visibility: hidden;" />  
 @endsection
 
 @section('js')
@@ -324,7 +323,8 @@
     /*end load image */
 
     /*start get hex dan rgb from foto */
-    var img = _('.thumbnail img'),
+    //var img = _('.thumbnail img'),
+    var img = _('#output'),
         canvas = _('#cs'),
         result = _('.result'),
         result_modal = _('.result_modal'),
@@ -339,7 +339,7 @@
        var x = (Math.ceil($("#cs").height()/2));
        //var y = (Math.ceil(($("#cs").width() +50)/2));
       var y = (Math.ceil(($("#cs").width())/2));
-       glb_first_capture_image = false;
+       glb_first_capture_image = false; 
       } else {
           if(e.offsetX) {
             x = e.offsetX;
