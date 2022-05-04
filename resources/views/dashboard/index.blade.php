@@ -50,7 +50,7 @@
                 <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none; color:white">
                 <div class="thumbnail">
                   <div class="preview"></div>
-                  <canvas id="cs" style="width: 100%; min-height: 100px;">                                                      
+                  <canvas id="cs" style="width: 100%; min-height: 200px">                                                      
                   </canvas>
                   <!--
                   <canvas id="myCanvas" ></canvas>    
@@ -68,6 +68,7 @@
         </div>          
     </div>
 
+    <!--  
     <a href="#" data-menu="menu-success" id="show-box-succes" style="display: none">Show Box Succes</a>
     <div id="menu-success" class="menu menu-box-bottom menu-box-detached round-medium" data-menu-height="315" data-menu-effect="menu-over">
         <h1 class="center-text top-30"><i class="fa fa-3x fa-check-circle color-green1-dark"></i></h1>
@@ -77,7 +78,7 @@
         </p>
         <a href="#" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-green1-light">OK</a>
     </div>       
-
+    -->
 
     <a href="#" data-menu="menu-success-2" id="show-box-succes-2" style="display: none">Show Box Succes 2</a>
     <div id="menu-success-2" class="menu menu-box-modal menu-box-round-medium menu-box-detached round-small" 
@@ -99,6 +100,7 @@
         </div>
     </div> 
 
+    <!--  
     <a href="#" data-menu="menu-warning" id="show-box-warning" style="display: none">Show Box Warning</a>
     <div id="menu-warning" class="menu menu-box-bottom menu-box-detached round-medium" data-menu-height="315" data-menu-effect="menu-over">
         <h1 class="center-text top-30"><i class="fa fa-3x fa-times color-red2-dark"></i></h1>
@@ -108,7 +110,9 @@
         </p>
         <a href="#" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-red1-light">Go Back</a>
     </div>   
+    -->
 
+    <!--
     <a href="#" data-menu="menu-warning-2" id="show-box-warning-2" style="display: none">Show Box Warning 2</a>
     <div id="menu-warning-2" class="menu menu-box-bottom menu-box-detached round-medium" data-menu-height="315" data-menu-effect="menu-over">
         <h1 class="center-text top-30"><i class="fa fa-3x fa-times color-red2-dark"></i></h1>
@@ -118,7 +122,9 @@
         </p>
         <a href="#" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-red1-light">Go Back</a>
     </div>   
+    -->
 
+    <!--  
     <a href="#" data-menu="menu-info" id="show-box-info" style="display: none">Show Box Warning</a>
     <div id="menu-info" 
          class="menu menu-box-bottom menu-box-detached round-medium" 
@@ -132,6 +138,7 @@
             <a href="#" class="close-menu button button-center-medium button-s shadow-large button-round-small bg-red1-light">Go Back</a>
         </div>
     </div> 
+    -->
 
     <!--
     <a href="#" data-menu="menu-add-color" id="show-add-color" style="display: none">Menu Add Color</a>
@@ -173,6 +180,7 @@
     </div>   
     -->
 
+      
     <a href="#" data-menu="menu-add-color" id="show-add-color" style="display: none">Menu Add Color</a>
     <div id="menu-add-color" class="menu menu-box-modal menu-box-round-medium menu-box-detached round-small" 
          data-menu-width="310"
@@ -385,10 +393,17 @@
     },false);
 
     function useCanvas(el,image,callback){
+      /*
       el.width = image.width;
       el.height = image.height; 
       el.getContext('2d')
       .drawImage(image, 0, 0, image.width, image.height);
+      */  
+
+      el.width = $("#cs").width();
+      el.height = $("#cs").height();   
+      el.getContext('2d')
+      .drawImage(image, 0, 0, $("#cs").width(), $("#cs").height());
 
       return callback();
     }
