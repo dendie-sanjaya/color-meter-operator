@@ -2,7 +2,9 @@
 
 @section('css')
    <style type="text/css">       
-     #cs{  display:none }
+     #cs{  display:block }
+
+     #output {  display: block; }
 
     .videobox, #video{
         text-align: center;
@@ -48,8 +50,13 @@
                 <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none; color:white">
                 <div class="thumbnail">
                   <div class="preview"></div>
-                  <img id="output" style="width: 100%; min-height: 100px;" />
-                  <canvas id="cs"></canvas>
+                  <canvas id="cs" style="width: 100%; min-height: 100px;">
+                    <img id="output" style="width: 100%; min-height: 100px;" />                  
+                    
+                  </canvas>
+                  <!--
+                  <canvas id="myCanvas" ></canvas>    
+                  -->
                   <!--
                   <img  id="output" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAApgAAAKYB3X3/OAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANCSURBVEiJtZZPbBtFFMZ/M7ubXdtdb1xSFyeilBapySVU8h8OoFaooFSqiihIVIpQBKci6KEg9Q6H9kovIHoCIVQJJCKE1ENFjnAgcaSGC6rEnxBwA04Tx43t2FnvDAfjkNibxgHxnWb2e/u992bee7tCa00YFsffekFY+nUzFtjW0LrvjRXrCDIAaPLlW0nHL0SsZtVoaF98mLrx3pdhOqLtYPHChahZcYYO7KvPFxvRl5XPp1sN3adWiD1ZAqD6XYK1b/dvE5IWryTt2udLFedwc1+9kLp+vbbpoDh+6TklxBeAi9TL0taeWpdmZzQDry0AcO+jQ12RyohqqoYoo8RDwJrU+qXkjWtfi8Xxt58BdQuwQs9qC/afLwCw8tnQbqYAPsgxE1S6F3EAIXux2oQFKm0ihMsOF71dHYx+f3NND68ghCu1YIoePPQN1pGRABkJ6Bus96CutRZMydTl+TvuiRW1m3n0eDl0vRPcEysqdXn+jsQPsrHMquGeXEaY4Yk4wxWcY5V/9scqOMOVUFthatyTy8QyqwZ+kDURKoMWxNKr2EeqVKcTNOajqKoBgOE28U4tdQl5p5bwCw7BWquaZSzAPlwjlithJtp3pTImSqQRrb2Z8PHGigD4RZuNX6JYj6wj7O4TFLbCO/Mn/m8R+h6rYSUb3ekokRY6f/YukArN979jcW+V/S8g0eT/N3VN3kTqWbQ428m9/8k0P/1aIhF36PccEl6EhOcAUCrXKZXXWS3XKd2vc/TRBG9O5ELC17MmWubD2nKhUKZa26Ba2+D3P+4/MNCFwg59oWVeYhkzgN/JDR8deKBoD7Y+ljEjGZ0sosXVTvbc6RHirr2reNy1OXd6pJsQ+gqjk8VWFYmHrwBzW/n+uMPFiRwHB2I7ih8ciHFxIkd/3Omk5tCDV1t+2nNu5sxxpDFNx+huNhVT3/zMDz8usXC3ddaHBj1GHj/As08fwTS7Kt1HBTmyN29vdwAw+/wbwLVOJ3uAD1wi/dUH7Qei66PfyuRj4Ik9is+hglfbkbfR3cnZm7chlUWLdwmprtCohX4HUtlOcQjLYCu+fzGJH2QRKvP3UNz8bWk1qMxjGTOMThZ3kvgLI5AzFfo379UAAAAASUVORK5CYII=">
                   -->
@@ -323,11 +330,15 @@
         result_modal = _('.result_modal'),
         preview = _('.preview'),x = '',y = '';
 
-    img.addEventListener('click', function(e){
+    canvas.addEventListener('click', function(e){
       if(glb_first_capture_image) {
-        var x = Math.ceil($("#output").height()/2);
-        var y = Math.ceil($("#output").width()/2);
+        //var x = Math.ceil($("#output").height()/2);
+        //var y = Math.ceil($("#output").width()/2);
         //alert('width:' + x + 'height:' + y);
+
+       var x = (Math.ceil($("#cs").height()/2));
+       //var y = (Math.ceil(($("#cs").width() +50)/2));
+      var y = (Math.ceil(($("#cs").width())/2));
        glb_first_capture_image = false;
       } else {
           if(e.offsetX) {
@@ -339,6 +350,17 @@
             y = e.layerY;
           }
       }
+
+      //var c = document.getElementById("cs");
+      var ctx = canvas.getContext("2d");
+      //ctx.beginPath();
+      //ctx.lineWidth = 4;
+      //ctx.canvas.width  = $("#output").width()
+      //ctx.canvas.height = $("#output").height();   
+      //ctx.clearRect(0, 0, ctx.width, ctx.height);   
+      //ctx.arc(x, y, 10, 0, 2 * Math.PI);
+      //ctx.strokeStyle = "#FFFFFF";
+      //ctx.stroke(); 
         
       useCanvas(canvas,img,function(){
       var p = canvas.getContext('2d')
@@ -354,12 +376,19 @@
         p[0]+','+
         p[1]+','+
         p[2]+')</div>';
+
+      canvas.getContext('2d').beginPath();
+      canvas.getContext('2d').lineWidth = 4;
+      canvas.getContext('2d').arc(x, y, 10, 0, 2 * Math.PI);
+      canvas.getContext('2d').strokeStyle = "#FFFFFF";
+      canvas.getContext('2d').stroke(); 
       
       document.body.style.background =rgbToHex(p[0],p[1],p[2]);  
       document.getElementById('hexadecimal').value = rgbToHex(p[0],p[1],p[2]); 
       document.getElementById('rgb').value = p[0]+','+p[1]+','+p[2];  
 
       scanColor(rgbToHex(p[0],p[1],p[2]),(p[0]+','+p[1]+','+p[2]),$.cookie("pattern_color_id"));
+
     });
     },false);
 
@@ -367,7 +396,8 @@
       el.width = image.width;
       el.height = image.height; 
       el.getContext('2d')
-      .drawImage(image, 0, 0, image.width, image.height);
+      .drawImage(image, 10, 10, image.width, image.height);
+
       return callback();
     }
     function _(el){
@@ -491,7 +521,9 @@
       }  
       */
 
-      setTimeout(function(){$('#output').trigger('click')},2000);    
+      //setTimeout(function(){$('#output').trigger('click')},2000);    
+
+      setTimeout(function(){$('#cs').trigger('click'); },1000);    
     }
 
     function hide_header() {
@@ -502,6 +534,8 @@
       autoClick();    
 
     }
+
+
 </script>
 @endsection
 
