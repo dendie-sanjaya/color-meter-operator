@@ -345,8 +345,8 @@
         //alert('width:' + x + 'height:' + y);
 
        var x = (Math.ceil($("#cs").width()/2));
-       //var y = (Math.ceil($("#cs").height()/2));
-       var y = (Math.ceil(img.height/2));
+       var y = (Math.ceil($("#cs").height()/2));
+       //var y = (Math.ceil(img.height/2));
        glb_first_capture_image = false; 
       } else {
           if(e.offsetX) {
@@ -401,8 +401,8 @@
       .drawImage(image, 0, 0, image.width, image.height);
       */  
 
-      el.width = image.width;
-      el.height = image.height; 
+      el.width = $("#cs").width();
+      el.height = $("#cs").height(); 
       el.getContext('2d')
       .drawImage(image, 0, 0, $("#cs").width(), $("#cs").height());
 
