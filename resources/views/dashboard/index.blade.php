@@ -50,7 +50,7 @@
                 <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none; color:white">
                 <div class="thumbnail">
                   <div class="preview"></div>
-                  <canvas id="cs" style="width: 100%; min-height: 100px">                                                      
+                  <canvas id="cs" style="width: 100%; min-height: 200px">                                                      
                   </canvas>
                   <!--
                   <canvas id="myCanvas" ></canvas>    
