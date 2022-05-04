@@ -50,7 +50,7 @@
                 <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none; color:white">
                 <div class="thumbnail">
                   <div class="preview"></div>
-                  <canvas id="cs" style="width: 100%; min-height: 200px">                                                      
+                  <canvas id="cs" style="width: 100%; min-height: 100px">                                                      
                   </canvas>
                   <!--
                   <canvas id="myCanvas" ></canvas>    
@@ -180,7 +180,7 @@
     </div>   
     -->
 
-      
+
     <a href="#" data-menu="menu-add-color" id="show-add-color" style="display: none">Menu Add Color</a>
     <div id="menu-add-color" class="menu menu-box-modal menu-box-round-medium menu-box-detached round-small" 
          data-menu-width="310"
@@ -345,7 +345,8 @@
         //alert('width:' + x + 'height:' + y);
 
        var x = (Math.ceil($("#cs").width()/2));
-       var y = (Math.ceil($("#cs").height()/2));
+       //var y = (Math.ceil($("#cs").height()/2));
+       var y = (Math.ceil(img.height/2));
        glb_first_capture_image = false; 
       } else {
           if(e.offsetX) {
@@ -400,8 +401,8 @@
       .drawImage(image, 0, 0, image.width, image.height);
       */  
 
-      el.width = $("#cs").width();
-      el.height = $("#cs").height();   
+      el.width = image.width;
+      el.height = image.height; 
       el.getContext('2d')
       .drawImage(image, 0, 0, $("#cs").width(), $("#cs").height());
 
