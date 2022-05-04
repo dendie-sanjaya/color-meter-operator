@@ -259,7 +259,7 @@
           if(response.code == 200) {
             $('#show-box-succes').click();
           } else {
-            $('#show-box-info').click();            
+            //$('#show-box-info').click();            
           }
         },
         error: function(error) {
@@ -336,9 +336,8 @@
         //var y = Math.ceil($("#output").width()/2);
         //alert('width:' + x + 'height:' + y);
 
-       var x = (Math.ceil($("#cs").height()/2));
-       //var y = (Math.ceil(($("#cs").width() +50)/2));
-      var y = (Math.ceil(($("#cs").width())/2));
+       var x = (Math.ceil($("#cs").width()/2));
+       var y = (Math.ceil($("#cs").height()/2));
        glb_first_capture_image = false; 
       } else {
           if(e.offsetX) {
@@ -351,17 +350,6 @@
           }
       }
 
-      //var c = document.getElementById("cs");
-      var ctx = canvas.getContext("2d");
-      //ctx.beginPath();
-      //ctx.lineWidth = 4;
-      //ctx.canvas.width  = $("#output").width()
-      //ctx.canvas.height = $("#output").height();   
-      //ctx.clearRect(0, 0, ctx.width, ctx.height);   
-      //ctx.arc(x, y, 10, 0, 2 * Math.PI);
-      //ctx.strokeStyle = "#FFFFFF";
-      //ctx.stroke(); 
-        
       useCanvas(canvas,img,function(){
       var p = canvas.getContext('2d')
       .getImageData(x, y, 1, 1).data; 
@@ -378,11 +366,15 @@
         p[2]+')</div>';
 
       canvas.getContext('2d').beginPath();
-      canvas.getContext('2d').lineWidth = 4;
-      canvas.getContext('2d').arc(x, y, 10, 0, 2 * Math.PI);
+      canvas.width  = $("#cs").width();
+      canvas.height = $("#cs").height();   
+      canvas.getContext('2d').drawImage(img, 0, 0, $("#cs").width(), $("#cs").height());
+      canvas.getContext('2d').arc(x, y, 10, 0, 2 * Math.PI,true);
+      canvas.getContext('2d').lineWidth = 6;
       canvas.getContext('2d').strokeStyle = "#FFFFFF";
       canvas.getContext('2d').stroke(); 
-      
+      canvas.getContext('2d').closePath();      
+
       document.body.style.background =rgbToHex(p[0],p[1],p[2]);  
       document.getElementById('hexadecimal').value = rgbToHex(p[0],p[1],p[2]); 
       document.getElementById('rgb').value = p[0]+','+p[1]+','+p[2];  
@@ -396,7 +388,7 @@
       el.width = image.width;
       el.height = image.height; 
       el.getContext('2d')
-      .drawImage(image, 10, 10, image.width, image.height);
+      .drawImage(image, 0, 0, image.width, image.height);
 
       return callback();
     }
