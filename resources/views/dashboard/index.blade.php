@@ -50,7 +50,7 @@
                 <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none; color:white">
                 <div class="thumbnail">
                   <div class="preview"></div>
-                  <canvas id="cs" style="width: 100%; min-height: 200px">                                                      
+                  <canvas id="cs" style="width: 100%; min-height: 100px">                                                      
                   </canvas>
                   <!--
                   <canvas id="myCanvas" ></canvas>    
@@ -345,8 +345,8 @@
         //alert('width:' + x + 'height:' + y);
 
        var x = (Math.ceil($("#cs").width()/2));
-       var y = (Math.ceil($("#cs").height()/2));
-       //var y = (Math.ceil(img.height/2));
+       //var y = (Math.ceil($("#cs").height()/2));
+       var y = (Math.ceil(img.height/2));
        glb_first_capture_image = false; 
       } else {
           if(e.offsetX) {
@@ -376,8 +376,11 @@
 
       canvas.getContext('2d').beginPath();
       canvas.width  = $("#cs").width();
-      canvas.height = $("#cs").height();   
-      canvas.getContext('2d').drawImage(img, 0, 0, $("#cs").width(), $("#cs").height());
+      //canvas.height = $("#cs").height();   
+      //canvas.getContext('2d').drawImage(img, 0, 0, $("#cs").width(), $("#cs").height());
+      canvas.height = img.height;
+      canvas.getContext('2d').drawImage(img, 0, 0, $("#cs").width(), img.height);
+
       canvas.getContext('2d').arc(x, y, 10, 0, 2 * Math.PI,true);
       canvas.getContext('2d').lineWidth = 6;
       canvas.getContext('2d').strokeStyle = "#FFFFFF";
@@ -402,9 +405,10 @@
       */  
 
       el.width = $("#cs").width();
-      el.height = $("#cs").height(); 
+      el.height = image.height; 
       el.getContext('2d')
-      .drawImage(image, 0, 0, $("#cs").width(), $("#cs").height());
+      //.drawImage(image, 0, 0, $("#cs").width(), $("#cs").height());
+      .drawImage(image, 0, 0, $("#cs").width(), image.height);
 
       return callback();
     }
