@@ -355,7 +355,7 @@
           }
           else if(e.layerX) {
             x = e.layerX;
-            y = e.layerY;
+            y = e.layerY;   
           }
       }
 

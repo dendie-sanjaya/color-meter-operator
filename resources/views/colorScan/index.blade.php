@@ -71,7 +71,7 @@
     </div>
 
     <a href="#" data-menu="menu-success" id="show-box-succes" style="display: none">Show Box Succes</a>
-    <div id="menu-success" class="menu menu-box-bottom menu-box-detached round-medium" data-menu-height="315" data-menu-effect="menu-over">
+    <div id="menu-success" class="menu menu-box-modal round-medium" data-menu-width="90%" data-menu-height="315" data-menu-effect="menu-over">
         <h1 class="center-text top-30"><i class="fa fa-3x fa-check-circle color-green1-dark"></i></h1>
         <h1 class="center-text uppercase ultrabold top-30">Save Color Success</h1>
         <p class="boxed-text-large">
@@ -102,7 +102,7 @@
     </div> 
 
     <a href="#" data-menu="menu-warning" id="show-box-warning" style="display: none">Show Box Warning</a>
-    <div id="menu-warning" class="menu menu-box-bottom menu-box-detached round-medium" data-menu-height="315" data-menu-effect="menu-over">
+    <div id="menu-warning" class="menu menu-box-modal round-medium" data-menu-width="90%"  data-menu-height="315" data-menu-effect="menu-over">
         <h1 class="center-text top-30"><i class="fa fa-3x fa-times color-red2-dark"></i></h1>
         <h1 class="center-text uppercase ultrabold top-30">Save Color Failed</h1>
         <p class="boxed-text-large">
@@ -112,7 +112,7 @@
     </div>   
 
     <a href="#" data-menu="menu-warning-2" id="show-box-warning-2" style="display: none">Show Box Warning 2</a>
-    <div id="menu-warning-2" class="menu menu-box-bottom menu-box-detached round-medium" data-menu-height="315" data-menu-effect="menu-over">
+    <div id="menu-warning-2" class="menu menu-box-modal round-medium" data-menu-width="90%"   data-menu-height="315" data-menu-effect="menu-over">
         <h1 class="center-text top-30"><i class="fa fa-3x fa-times color-red2-dark"></i></h1>
         <h1 class="center-text uppercase ultrabold top-30">Scan Color Failed</h1>
         <p class="boxed-text-large">
@@ -122,9 +122,10 @@
     </div>   
 
     <a href="#" data-menu="menu-info" id="show-box-info" style="display: none">Show Box Warning</a>
-    <div id="menu-info" 
-         class="menu menu-box-bottom menu-box-detached round-medium" 
+    <div id="menu-info"  
+         class="menu menu-box-modal round-medium" 
          data-menu-height="240" 
+         data-menu-width="90%" 
          data-menu-effect="menu-over">
         <div class="boxed-text-huge">
             <h3 class="center-text uppercase ultrabold top-30">Opps, Color Already Exist</h3>
@@ -137,8 +138,9 @@
 
     <a href="#" data-menu="menu-add-color" id="show-add-color" style="display: none">Menu Add Color</a>
     <div id="menu-add-color" 
-         class="menu menu-box-bottom menu-box-detached round-medium" 
+         class="menu menu-box-modal round-medium" 
          data-menu-height="380" 
+         data-menu-width="90%" 
          data-menu-effect="menu-over">
 
         <div class="boxed-text-huge">
