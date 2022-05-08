@@ -2,9 +2,7 @@
 
 @section('css')
    <style type="text/css">       
-     #cs{  display:block; }
-
-     #output {  display: block; }     
+     #cs{  display:none }
 
     .videobox, #video{
         text-align: center;
@@ -18,7 +16,6 @@
 
 @section('content')
     <div class="page-content header-clear-small">        
-        <!--
         <div id="header-1" data-height="130" class="caption caption-margins round-medium shadow-huge">
             <div class="caption-center left-15 text-left">
                 <h1 class="color-white bolder">Scan Color</h1>
@@ -38,15 +35,10 @@
                 </p>
             </div>            
         </div>
-        -->
 
-        <div class="content-boxed" id="header-3" style="margin-top: -50px;">  
-            <div class="content" >          
-                <h3 class="bolder">Scan New Color</h3>
-
-                <p style="text-align: justify;">
-                    welcome to color meter Nutricell, this feature for add new scan color
-                </p>
+        <div class="content-boxed" id="header-3" style="margin-top: -50px; display: none">  
+            <div class="content" style="text-align: center;">          
+                <h3 class="bolder">Color Meter Nutricell</h3>
             </div>  
         </div>
 
@@ -56,7 +48,8 @@
                 <input type="file" accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none; color:white">
                 <div class="thumbnail">
                   <div class="preview"></div>
-                  <canvas id="cs" style="width: 100%; min-height: 100px"></canvas>
+                  <img id="output" style="width: 100%; min-height: 100px;" />
+                  <canvas id="cs"></canvas>
                   <!--
                   <img  id="output" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAApgAAAKYB3X3/OAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANCSURBVEiJtZZPbBtFFMZ/M7ubXdtdb1xSFyeilBapySVU8h8OoFaooFSqiihIVIpQBKci6KEg9Q6H9kovIHoCIVQJJCKE1ENFjnAgcaSGC6rEnxBwA04Tx43t2FnvDAfjkNibxgHxnWb2e/u992bee7tCa00YFsffekFY+nUzFtjW0LrvjRXrCDIAaPLlW0nHL0SsZtVoaF98mLrx3pdhOqLtYPHChahZcYYO7KvPFxvRl5XPp1sN3adWiD1ZAqD6XYK1b/dvE5IWryTt2udLFedwc1+9kLp+vbbpoDh+6TklxBeAi9TL0taeWpdmZzQDry0AcO+jQ12RyohqqoYoo8RDwJrU+qXkjWtfi8Xxt58BdQuwQs9qC/afLwCw8tnQbqYAPsgxE1S6F3EAIXux2oQFKm0ihMsOF71dHYx+f3NND68ghCu1YIoePPQN1pGRABkJ6Bus96CutRZMydTl+TvuiRW1m3n0eDl0vRPcEysqdXn+jsQPsrHMquGeXEaY4Yk4wxWcY5V/9scqOMOVUFthatyTy8QyqwZ+kDURKoMWxNKr2EeqVKcTNOajqKoBgOE28U4tdQl5p5bwCw7BWquaZSzAPlwjlithJtp3pTImSqQRrb2Z8PHGigD4RZuNX6JYj6wj7O4TFLbCO/Mn/m8R+h6rYSUb3ekokRY6f/YukArN979jcW+V/S8g0eT/N3VN3kTqWbQ428m9/8k0P/1aIhF36PccEl6EhOcAUCrXKZXXWS3XKd2vc/TRBG9O5ELC17MmWubD2nKhUKZa26Ba2+D3P+4/MNCFwg59oWVeYhkzgN/JDR8deKBoD7Y+ljEjGZ0sosXVTvbc6RHirr2reNy1OXd6pJsQ+gqjk8VWFYmHrwBzW/n+uMPFiRwHB2I7ih8ciHFxIkd/3Omk5tCDV1t+2nNu5sxxpDFNx+huNhVT3/zMDz8usXC3ddaHBj1GHj/As08fwTS7Kt1HBTmyN29vdwAw+/wbwLVOJ3uAD1wi/dUH7Qei66PfyuRj4Ik9is+hglfbkbfR3cnZm7chlUWLdwmprtCohX4HUtlOcQjLYCu+fzGJH2QRKvP3UNz8bWk1qMxjGTOMThZ3kvgLI5AzFfo379UAAAAASUVORK5CYII=">
                   -->
@@ -135,6 +128,7 @@
         </div>
     </div> 
 
+    <!--
     <a href="#" data-menu="menu-add-color" id="show-add-color" style="display: none">Menu Add Color</a>
     <div id="menu-add-color" 
          class="menu menu-box-bottom menu-box-detached round-medium" 
@@ -142,9 +136,9 @@
          data-menu-effect="menu-over">
 
         <div class="boxed-text-huge">
-            <h3 class="center-text uppercase ultrabold top-30">Opps, Not Found</h3>
+            <h3 class="center-text uppercase ultrabold top-30">Opps, Color Not Found</h3>
             <p>
-                You can add a new collection color, please choose a grade and color set, by filling out the form below
+                You can add a new collection color, please choose a grade and pattern, by filling out the form below
             </p>
 
             <div class="content">
@@ -160,7 +154,7 @@
                 </div>    
 
                 <div class="input-style input-style-2 input-required margin-top-1">
-                    <label class="contactNameField color-theme" for="contactNameField" style="text-align: left;">Color Set</label>
+                    <label class="contactNameField color-theme" for="contactNameField" style="text-align: left;">Patern Color</label>
                     <select name="color_patern_id" id="color_pattern_id" class="contactField round-small" >
                         <?php foreach ($dataColorPattern as $val): ?>
                             <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
@@ -171,14 +165,72 @@
                 <a href="#" class=" close-menu button button-xxs shadow-small button-round-small bg-red1-light round-small;" style="width: 47%">Go Back</a>
             </div>   
         </div>
-    </div>           
-    <img id="output" style="width: 100%; min-height: 100px; visibility: hidden;" />              
+    </div>   
+    -->
+
+    <a href="#" data-menu="menu-add-color" id="show-add-color" style="display: none">Menu Add Color</a>
+    <div id="menu-add-color" class="menu menu-box-modal menu-box-round-medium menu-box-detached round-small" 
+         data-menu-width="310"
+         data-menu-height="auto"
+         data-menu-effect="menu-over"
+         data-menu-select="page-components"         
+     >
+
+        <div class="boxed-text-huge">
+            <h3 class="center-text uppercase ultrabold top-30">Opps!</h3>
+            <p style="color: white">
+                Undifiend Color Set and Color Grade No Found
+            
+            </p>
+
+            <div class="top-30 boxed-text-huge">
+                <input type="hidden" name="hexadecimal" id="hexadecimal" value="">
+                <input type="hidden" name="rgb" id="rgb" value="">
+
+                <h1 class="bottom-30"><i class="fa fa-3x fa-times color-red2-dark"></i></h1>
+                <h2 class="uppercase bold">Chosen Color<h2>
+                <p class="under-heading color-highlight bottom-20">Undifiend Color Set and Color Grade No Found!</p>
+                <p class="center-text-huge">
+                    <span id="result_modal" class="result_modal" style="color: white; font-size: 12px font-weight: bold"></span>
+                </p>
+                <!-- add hide-cookie to the class to delete the cookie-->
+                <a href="#" class="close-menu button button-s button-center-large button-round-medium shadow-large bg-highlight">Go Back</a>
+                <br /><br />
+            </div>
+
+            <!--
+            <div class="content">
+                <input type="hidden" name="hexadecimal" id="hexadecimal" value="">
+                <input type="hidden" name="rgb" id="rgb" value="">
+                <div class="input-style input-style-2 input-required margin-top-1">
+                    <label class="contactNameField color-theme" for="contactNameField" style="text-align: left;" >Grade Color</label>
+                    <select name="color_grade_id" id="color_grade_id" class="contactField round-small" >
+                        <?php foreach ($dataColorGrade as $val): ?>
+                            <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
+                        <?php endforeach; ?>
+                    </select>                
+                </div>    
+
+                <div class="input-style input-style-2 input-required margin-top-1">
+                    <label class="contactNameField color-theme" for="contactNameField" style="text-align: left;">Patern Color</label>
+                    <select name="color_patern_id" id="color_pattern_id" class="contactField round-small" >
+                        <?php foreach ($dataColorPattern as $val): ?>
+                            <option value="{{ $val->id }}" style="background-color: #1f1f1f;">{{ $val->name }}</option>
+                        <?php endforeach; ?>
+                    </select>                
+                </div>   
+                <a href="#" class="button button-xxs shadow-small button-round-small bg-green2-dark round-small;" onclick="saveColor()" style="width: 47%">Save Color</a>
+                <a href="#" class=" close-menu button button-xxs shadow-small button-round-small bg-red1-light round-small;" style="width: 47%">Go Back</a>
+              -->
+            </div>   
+        </div>
+    </div>                               
 @endsection
 
 @section('js')
 <script type="text/javascript">
-    var glb_first_capture_image = true;
     /*start convert image to base64 */
+    var glb_first_capture_image = true;
     function saveColor() {
       var hexadecimal = $('#hexadecimal').val();
       var rgb = $('#rgb').val(); 
@@ -259,88 +311,63 @@
         var fileinput = event.target.files[0];
         document.getElementById('capture-image').style.display = 'block';
         handleFileSelect(fileinput);
-        hide_header();      
-        glb_first_capture_image = true;          
+        hide_header();    
+        glb_first_capture_image = true;
     };
     /*end load image */
 
     /*start get hex dan rgb from foto */
-    //var img = _('.thumbnail img'),
-    var img = _('#output'),    
+    var img = _('.thumbnail img'),
         canvas = _('#cs'),
         result = _('.result'),
+        result_modal = _('.result_modal'),
         preview = _('.preview'),x = '',y = '';
 
-        //img.addEventListener('click', function(e){
-        canvas.addEventListener('click', function(e){
-
-        if(glb_first_capture_image) {
-          /*
-          var x = Math.ceil($("#output").height()/2);
-          var y = Math.ceil($("#output").width()/2);
-          */
-          var x = (Math.ceil($("#cs").width()/2));
-          //var y = (Math.ceil($("#cs").height()/2));
-          var y = (Math.ceil(img.height/2));          
-          //alert('width:' + x + 'height:' + y);
-         glb_first_capture_image = false;
-        } else {
-            if(e.offsetX) {
-              x = e.offsetX;
-              y = e.offsetY; 
-            }
-            else if(e.layerX) {
-              x = e.layerX;
-              y = e.layerY;
-            }
-        }
-
-        useCanvas(canvas,img,function(){
-        var p = canvas.getContext('2d')
-        .getImageData(x, y, 1, 1).data; 
-        result.innerHTML = '<div  style="font-weight:bold; padding:0px; margin-top: 10px; text-align:center; border:white 2px solid; background-color: '+rgbToHex(p[0],p[1],p[2])+'">Hexadecimal: '+rgbToHex(p[0],p[1],p[2])+'&nbsp;&nbsp;'+
-         'RGB: ('+
-          p[0]+','+
-          p[1]+','+
-          p[2]+')</div>';
-
-          canvas.getContext('2d').beginPath();
-          canvas.width  = $("#cs").width();
-          //canvas.height = $("#cs").height();   
-          //canvas.getContext('2d').drawImage(img, 0, 0, $("#cs").width(), $("#cs").height());
-          canvas.height = img.height;
-          canvas.getContext('2d').drawImage(img, 0, 0, $("#cs").width(), img.height);
-
-          canvas.getContext('2d').arc(x, y, 10, 0, 2 * Math.PI,true);
-          canvas.getContext('2d').lineWidth = 6;
-          canvas.getContext('2d').strokeStyle = "#FFFFFF";
-          canvas.getContext('2d').stroke(); 
-          canvas.getContext('2d').closePath();      
+    img.addEventListener('click', function(e){
+      if(glb_first_capture_image) {
+        var x = Math.ceil($("#output").height()/2);
+        var y = Math.ceil($("#output").width()/2);
+        //alert('width:' + x + 'height:' + y);
+       glb_first_capture_image = false;
+      } else {
+          if(e.offsetX) {
+            x = e.offsetX;
+            y = e.offsetY; 
+          }
+          else if(e.layerX) {
+            x = e.layerX;
+            y = e.layerY;
+          }
+      }
         
-        document.body.style.background =rgbToHex(p[0],p[1],p[2]);  
-        document.getElementById('hexadecimal').value = rgbToHex(p[0],p[1],p[2]); 
-        document.getElementById('rgb').value = p[0]+','+p[1]+','+p[2];  
+      useCanvas(canvas,img,function(){
+      var p = canvas.getContext('2d')
+      .getImageData(x, y, 1, 1).data; 
+      result.innerHTML = '<div  style="font-weight:bold; padding:0px; margin-top: 10px; text-align:center; border:white 2px solid; background-color: '+rgbToHex(p[0],p[1],p[2])+'">Hexadecimal: '+rgbToHex(p[0],p[1],p[2])+'&nbsp;&nbsp;'+
+       'RGB: ('+
+        p[0]+','+
+        p[1]+','+
+        p[2]+')</div>';
 
-        scanColor(rgbToHex(p[0],p[1],p[2]),(p[0]+','+p[1]+','+p[2]),$.cookie("pattern_color_id"));
-      });
+      result_modal.innerHTML = '<div  style="font-weight:bold; padding:0px; margin-top: 10px; text-align:center; border:white 2px solid; background-color: '+rgbToHex(p[0],p[1],p[2])+'">Hexadecimal: '+rgbToHex(p[0],p[1],p[2])+'&nbsp;&nbsp;'+
+       'RGB: ('+
+        p[0]+','+
+        p[1]+','+
+        p[2]+')</div>';
+      
+      document.body.style.background =rgbToHex(p[0],p[1],p[2]);  
+      document.getElementById('hexadecimal').value = rgbToHex(p[0],p[1],p[2]); 
+      document.getElementById('rgb').value = p[0]+','+p[1]+','+p[2];  
+
+      scanColor(rgbToHex(p[0],p[1],p[2]),(p[0]+','+p[1]+','+p[2]),$.cookie("pattern_color_id"));
+    });
     },false);
 
-
-
     function useCanvas(el,image,callback){
-      /*
       el.width = image.width;
       el.height = image.height; 
       el.getContext('2d')
       .drawImage(image, 0, 0, image.width, image.height);
-      */
-
-      el.width = $("#cs").width();
-      el.height = image.height; 
-      el.getContext('2d')
-      //.drawImage(image, 0, 0, $("#cs").width(), $("#cs").height());
-      .drawImage(image, 0, 0, $("#cs").width(), image.height);
-
       return callback();
     }
     function _(el){
@@ -424,7 +451,7 @@
     }
     /*end convert image to base64 */
     function autoClick() {
-          /*
+      /*
           var img = document.getElementById('output'); 
 
           var height = Math.ceil($("#output").height()/2);
@@ -435,30 +462,45 @@
 
           $("#output").focus();
           var event = $.Event('click');
+
+            if(event.offsetX) {
+              event.offsetX = 200;              
+              event.offsetY = 50
+            }
+            else if(event.layerX) {
+              event.layerX = 200;
+              event.layerY = 50;
+            }
+
+          //console.log(event)
+          //lert(event.offsetX);
+
           //event.clientX = width;
-          //event.clientY =  height;
-          //$('#output').trigger(event,[height,width]);   
-          event.pageX = 10;
-          event.pageY = 10;  
+         // event.clientY =  height;
+          $('#output').trigger('click',function () { this.position = function() { this.left = width; this.top = height; }; });   
+          //event.pageX = 200;
+          //event.pageY = 50;  
+          //event.pageX = 200;
+          //event.pageY = 50;  
+
           //var x = event.pageX - this.offsetLeft;
           //var y = event.pageY - this.offsetTop;
 
-          $('#output').trigger(event);    
 
         }, 2000); 
-        */
+      }  
+      */
 
-      //setTimeout(function(){$('#output').trigger('click')},2000);
-      setTimeout(function(){$('#cs').trigger('click'); },1000);               
+      setTimeout(function(){$('#output').trigger('click')},2000);    
     }
 
     function hide_header() {
-       /*
        document.getElementById('header-1').style.display = 'none';
        document.getElementById('header-2').style.display = 'none';
        document.getElementById('header-3').style.display = 'block';
-       */
-       autoClick();
+      //$('#output').trigger('click');   
+      autoClick();    
+
     }
 </script>
 @endsection
